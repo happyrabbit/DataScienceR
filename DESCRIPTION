@@ -5,6 +5,15 @@ Authors@R: person("Hui", "Lin", email = "longqiman@gmail.com", role = c("aut", "
 Description: Models for predictive analytics
 Depends:
     R (>= 3.3.1)
+Imports:
+    caret
+    MASS
+    pROC
+    pls
+    e1071
+    nnet
+    randomForest
+    grplasso
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
