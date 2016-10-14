@@ -1,4 +1,7 @@
-######################################## impute missing value
+#' Impute 0 to missing values
+#'
+#' @param dat a data frame.
+
 impute0 <- function(dat) {
   for (i in 1:ncol(dat)) {
     idx <- which(is.na(dat[, i]))

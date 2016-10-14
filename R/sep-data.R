@@ -1,3 +1,7 @@
+#' Separate data frame according to variable type
+#'
+#' @param dat a data frame.
+#'
 sep_data <- function(dat) {
   ######################################## separate predictors according to their attribute
   id_opstus <- grep("OPSTATUSCD", names(dat))
