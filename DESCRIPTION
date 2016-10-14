@@ -6,13 +6,13 @@ Description: Models for predictive analytics
 Depends:
     R (>= 3.3.1)
 Imports:
-    caret (>= 6.0.71)
-    MASS (>=7.3.45)
-    pROC (>= 1.8)
-    pls (>= 2.5.0)
-    e1071 (>= 1.6.7)
-    nnet (>= 7.3.12)
-    randomForest (>= 4.6.12)
+    caret (>= 6.0.71),
+    MASS (>=7.3.45),
+    pROC (>= 1.8),
+    pls (>= 2.5.0),
+    e1071 (>= 1.6.7),
+    nnet (>= 7.3.12),
+    randomForest (>= 4.6.12),
     grplasso (>= 0.4.5)
 License: MIT + file LICENSE
 Encoding: UTF-8
