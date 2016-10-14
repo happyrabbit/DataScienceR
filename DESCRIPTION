@@ -1,5 +1,5 @@
-Package: pml
-Title: Predictive Machine Learning
+Package: DataScienceR
+Title: Data Science Using R
 Version: 0.0.0.9000
 Authors@R: person("Hui", "Lin", email = "longqiman@gmail.com", role = c("aut", "cre"))
 Description: Models for predictive analytics
