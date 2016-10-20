@@ -1,3 +1,4 @@
+#' @export
 ########################outliers
 out_mad<-function(x){
 v2<-x-median(na.omit(x))

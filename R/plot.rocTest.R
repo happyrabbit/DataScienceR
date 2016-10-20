@@ -3,6 +3,7 @@
 #' @author Hui Lin, \email{longqiman@gmail.com}
 #' @param x  rocTest object
 
+#' @export
 plot.rocTest <- function(x, auto.legend = TRUE, ...)
 
 {

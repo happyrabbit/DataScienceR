@@ -24,6 +24,7 @@
 #' plot.cv.glasso(cv.fit)
 #' }
 #'
+#' @export
 plot.cv.glasso <- function (x, type.measure = "auc", ...)
 {
   cvobj = x

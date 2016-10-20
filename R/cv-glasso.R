@@ -26,6 +26,7 @@
 #' str(cv.fit)
 #' }
 
+#' @export
 cv.glasso <- function(trainx, trainy, nlam = 100, type = "link", kfold = 10,
                       na_action = na.pass) {
 
