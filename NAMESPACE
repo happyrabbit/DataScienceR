@@ -2,6 +2,7 @@
 
 S3method(plot,cv.glasso)
 S3method(plot,rocTest)
+S3method(plot,tune.cutoff)
 export(clust_ana)
 export(cv.glasso)
 export(impute_dat)
@@ -10,3 +11,4 @@ export(out_mad)
 export(rocTest)
 export(sep_data)
 export(summarySE)
+export(tune.cutoff)

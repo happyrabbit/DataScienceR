@@ -28,9 +28,9 @@ Does k-fold cross-validation for group lasso logistic regression and returns a l
 }
 \examples{
 \dontrun{
-dat <- read.csv("/Users/happyrabbit/Documents/GitHub/DataScientistR/Data/sim1_da1.csv")
-trainx = dplyr::select(dat, -y)
-trainy = dat$y
+data("sim1_da1")
+trainx = dplyr::select(sim1_da1, -y)
+trainy = sim1_da1$y
 # index of the group
 index <- gsub("\\\\..*", "", names(trainx))
 # nlam is the number of values of tuning variable
