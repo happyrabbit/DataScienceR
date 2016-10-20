@@ -1,3 +1,10 @@
+#` Compute the area under the ROC curve and compare different AUC's
+#' @description This function compares the AUC of two correlated (or paired) or uncorrelated (un- paired) ROC curves.
+#' @author Hui Lin, \email{longqiman@gmail.com}
+#' @param y  response
+#' @param x  prediction
+#' @param L  list to assign the comparisons
+
 rocTest <- function(y, x, L = NULL) {
 
     trapezarea <- function (x, y)
@@ -6,7 +13,7 @@ rocTest <- function(y, x, L = NULL) {
             x <- rev(x)
             y <- rev(y)
         }
-        if (length(x) != length(y)) 
+        if (length(x) != length(y))
             stop("length x must equal length y")
         if (length(unique(x)) < 2)
             return(NA)
@@ -37,11 +44,11 @@ rocTest <- function(y, x, L = NULL) {
         names(sens) <- paste("Test", LETTERS[1:length(x)])
         names(spec) <- paste("Test", LETTERS[1:length(x)])
     }
-    
+
     if (!is.null(L)) {
         V10 <- matrix(NA, nrow = length(y[y == 1]), ncol = length(x))
         V01 <- matrix(NA, nrow = length(y[y == 0]), ncol = length(x))
-        
+
         for (j in 1:length(x)) {
             x.s <- split(x[[j]], y)
             for (i in 1:length(x.s$"1"))
@@ -49,17 +56,17 @@ rocTest <- function(y, x, L = NULL) {
             for (i in 1:length(x.s$"0"))
                 V01[i, j] <- (length(x.s$"1"[x.s$"0"[i] < x.s$"1"]) + .5 * length(x.s$"1"[x.s$"1" == x.s$"0"[i]])) / length(y[y == 1])
         }
-        
+
         S10 <- (t(V10) %*% V10 - length(y[y == 1]) * th %*% t(th)) / (length(y[y == 1]) - 1)
         S01 <- (t(V01) %*% V01 - length(y[y == 0]) * th %*% t(th)) / (length(y[y == 0]) - 1)
-        
+
         S <- S10 / length(y[y == 1]) + S01 / length(y[y == 0])
-        
+
         contr <- L %*% th
         se <- sqrt((L %*% S %*% t(L)))
-        
+
         test <- t(th) %*% t(L) %*% solve(L %*% (1 /length(y[y ==1]) * S10 + 1 / length(y[y ==0]) * S01) %*% t(L), t(t(th) %*% t(L)))
-        
+
         p.value <- pchisq(test, df = qr(L %*% S %*% t(L))$rank, lower.tail = FALSE)
     }
     else {
@@ -67,7 +74,7 @@ rocTest <- function(y, x, L = NULL) {
         p.value <- NULL
         contr <- NULL
     }
-    
+
     names(th) <- names(x)
     res <- list(th = th, sens = sens, spec = spec, contr = contr, S = S, p.value = p.value)
     class(res) <- "rocTest"

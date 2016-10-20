@@ -1,3 +1,8 @@
+#' Plot ROC curve
+#' @description Plot ROC curve based on rocTest object
+#' @author Hui Lin, \email{longqiman@gmail.com}
+#' @param x  rocTest object
+
 plot.rocTest <- function(x, auto.legend = TRUE, ...)
 
 {
@@ -18,7 +23,7 @@ axis(2,c(0,.5,1))
 
     if (auto.legend) legend(0.6,0.3,
     #"bottomright",
-    lty = c(1:length(x$sens),6), 
+    lty = c(1:length(x$sens),6),
 
     #col = 1:length(x$sens),
 

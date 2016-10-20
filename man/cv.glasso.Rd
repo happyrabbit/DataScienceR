@@ -14,14 +14,14 @@ cv.glasso(trainx, trainy, nlam = 100, type = "link", kfold = 10,
 
 \item{nlam}{number of lambda values. The default is 100}
 
-\item{type}{the type of prediction. type = 'link' is on the scale of linear predictors (default), whereas type = 'response' is on the scale of the response  variable, i.e. type = 'response' applies the inverse link function to the linear predictors.}
+\item{type}{the type of prediction. \code{type = 'link'} is on the scale of linear predictors (default), whereas \code{type = 'response'} is on the scale of the response  variable, i.e. \code{type = 'response'} applies the inverse link function to the linear predictors.}
 
 \item{kfold}{number of folds - default is 10. Although nfolds can be as large as the sample size (leave-one-out CV), it is not recommended for large datasets. The default is 10.}
 
 \item{na_action}{function determining what should be done with missing values when predicting new data during cross validation. The default is to predict NA.}
 }
 \value{
-an object of class "cv.glasso" is returned, which is a list with the ingredients of the cross-validation fit.
+an object of class "\code{cv.glasso}" is returned, which is a list with the ingredients of the cross-validation fit.
 }
 \description{
 Does k-fold cross-validation for group lasso logistic regression and returns a list object
@@ -42,5 +42,8 @@ kfold <- 10
 cv.fit <- cv.glasso(trainx, trainy, nlam = nlam, kfold = kfold)
 str(cv.fit)
 }
+}
+\author{
+Hui Lin, \email{longqiman@gmail.com}
 }
 
