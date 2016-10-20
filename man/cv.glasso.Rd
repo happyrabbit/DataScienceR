@@ -2,7 +2,7 @@
 % Please edit documentation in R/cv-glasso.R
 \name{cv.glasso}
 \alias{cv.glasso}
-\title{Cross-validation for glmnet}
+\title{Cross-validation for group lasso logistic regression}
 \usage{
 cv.glasso(trainx, trainy, nlam = 100, type = "link", kfold = 10,
   na_action = na.pass)

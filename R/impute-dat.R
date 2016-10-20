@@ -13,7 +13,9 @@
 #' summary(impdat)
 #' }
 
+#' @export
 impute_dat <- function (dat, method){
+  ##--------------------------------- zero
   if (method == "zero")
   {
     for (i in 1:ncol(dat)) {

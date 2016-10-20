@@ -2,6 +2,7 @@
 #'
 #' @param dat a data frame.
 #'
+#' @export
 sep_data <- function(dat) {
   ######################################## separate predictors according to their attribute
   id_opstus <- grep("OPSTATUSCD", names(dat))

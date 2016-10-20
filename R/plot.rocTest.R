@@ -1,7 +1,7 @@
 #' Plot ROC curve
 #' @description Plot ROC curve based on rocTest object
-#' @author Hui Lin, \email{longqiman@gmail.com}
 #' @param x  rocTest object
+#' @author Hui Lin, \email{longqiman@gmail.com}
 
 #' @export
 plot.rocTest <- function(x, auto.legend = TRUE, ...)

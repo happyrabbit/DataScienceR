@@ -39,8 +39,8 @@ cv.glasso <- function(trainx, trainy, nlam = 100, type = "link", kfold = 10,
   colnames(x) <- c("Intercept", colnames(trainx))
   index <- c(NA, as.factor(index))
   ################################# Get a vector of tuning parameters
-  lambda <- lambdamax(x, y = trainy, index = index, penscale = sqrt, model = LogReg()) *
-    0.96^(1:nlam)
+  lambda <- lambdamax(x, y = trainy, index = index, penscale = sqrt,
+                      model = LogReg()) * 0.96^(1:nlam)
 
   index0 <- c(1:n)
   y0 <- NULL
@@ -68,8 +68,8 @@ cv.glasso <- function(trainx, trainy, nlam = 100, type = "link", kfold = 10,
     auc[i] <- as.numeric(auc(y0, pre[, i]))
   }
   pmsure = auc
-  lambda.max.auc=lambda[which(pmsure==max(pmsure))]
-  lambda.1se.auc=lambda[min(which(pmsure>= (max(pmsure)-sd(pmsure)) ))]
+  lambda.max.auc = lambda[which(pmsure == max(pmsure))]
+  lambda.1se.auc = lambda[min(which(pmsure >= (max(pmsure) - sd(pmsure))))]
   ############################## Maximize log-likelihood
   loglike <- rep(0, ncol(pre))
   for (i in 1:ncol(pre)) {
@@ -77,8 +77,8 @@ cv.glasso <- function(trainx, trainy, nlam = 100, type = "link", kfold = 10,
                                                                          exp(pre[, i]))) * (1 - y0))
   }
   pmsure = loglike
-  lambda.max.loglike=lambda[which(pmsure==max(pmsure))]
-  lambda.1se.loglike=lambda[min(which(pmsure>= (max(pmsure)-sd(pmsure)) ))]
+  lambda.max.loglike = lambda[which(pmsure == max(pmsure))]
+  lambda.1se.loglike = lambda[min(which(pmsure >= (max(pmsure) - sd(pmsure))))]
   ############################## Maximize correlation
   co <- pre
   maxco <- rep(0, ncol(pre))
@@ -91,20 +91,13 @@ cv.glasso <- function(trainx, trainy, nlam = 100, type = "link", kfold = 10,
     maxco[i] <- max(na.omit(co[, i]))
   }
   pmsure = maxco
-  lambda.max.maxco=lambda[which(pmsure==max(pmsure))]
-  lambda.1se.maxco=lambda[min(which(pmsure>= (max(pmsure)-sd(pmsure)) ))]
+  lambda.max.maxco = lambda[which(pmsure == max(pmsure))]
+  lambda.1se.maxco = lambda[min(which(pmsure >= (max(pmsure) - sd(pmsure))))]
   ###############
-  res <- list(lambda=lambda,
-              pred = pre,
-              auc = auc,
-              log_likelihood = loglike,
-              maxrho = maxco,
-              lambda.max.auc = lambda.max.auc,
-              lambda.1se.auc = lambda.1se.auc,
-              lambda.max.loglike = lambda.max.loglike,
-              lambda.1se.loglike = lambda.1se.loglike,
-              lambda.max.maxco = lambda.max.maxco,
-              lambda.1se.maxco = lambda.1se.maxco)
+  res <- list(lambda = lambda, pred = pre, auc = auc, log_likelihood = loglike,
+              maxrho = maxco, lambda.max.auc = lambda.max.auc, lambda.1se.auc = lambda.1se.auc,
+              lambda.max.loglike = lambda.max.loglike, lambda.1se.loglike = lambda.1se.loglike,
+              lambda.max.maxco = lambda.max.maxco, lambda.1se.maxco = lambda.1se.maxco)
   return(res)
   class(res) <- "cv.glasso"
   invisible(res)
