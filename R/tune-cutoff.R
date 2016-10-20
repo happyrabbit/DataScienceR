@@ -25,7 +25,8 @@
 #' }
 #'
 #' @export
-tune.cutoff <- function(test, y, likelihood) {
+#'
+tune_cutoff <- function(test, y, likelihood) {
 
   n <- length(y)
   ppv <- rep(-1, n)

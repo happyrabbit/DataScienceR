@@ -1,6 +1,6 @@
-#' plot the cross-validation curve produced by  "\code{cv.glasso}"
+#' plot the cross-validation curve produced by  "\code{cv_glasso}"
 #' @description Plots the cross-validation curve as a function of the lambda values used.
-#' @param x  fitted "\code{cv.glasso}" object
+#' @param x  fitted "\code{cv_glasso}" object
 #' @param type.measure criteria to use for cross-validation. Currently three options. The default is \code{type.measure = "auc"} which gives area under the ROC curve. \code{type.measure = "loglike"} computes the log-likelihood score in Meier et al2008. \code{type.measure = "maxco"} computes the maximum correlation coefficient in Yeo and Burge.
 #' @return A plot is produced, and nothing is returned.
 #' @author Hui Lin, \email{longqiman@gmail.com}
@@ -9,9 +9,9 @@
 #'
 #' @examples
 #' \dontrun{
-#' dat <- read.csv("/Users/happyrabbit/Documents/GitHub/DataScientistR/Data/sim1_da1.csv")
-#' trainx = dplyr::select(dat, -y)
-#' trainy = dat$y
+#' data("sim1_da1")
+#' trainx = dplyr::select(sim1_da1, -y)
+#' trainy = sim1_da1$y
 #' # index of the group
 #' index <- gsub("\\..*", "", names(trainx))
 #' # nlam is the number of values of tuning variable
@@ -20,12 +20,13 @@
 #' type = "link"
 #' # number of cross-validation folds
 #' kfold <- 10
-#' cv.fit <- cv.glasso(trainx, trainy, nlam = nlam, kfold = kfold)
-#' plot.cv.glasso(cv.fit)
+#' cv.fit <- cv_glasso(trainx, trainy, nlam = nlam, kfold = kfold)
+#' plot.cv_glasso(cv.fit)
 #' }
 #'
 #' @export
-plot.cv.glasso <- function (x, type.measure = "auc", ...)
+#'
+plot.cv_glasso <- function (x, type.measure = "auc", ...)
 {
   cvobj = x
   xlab = "Lambda"

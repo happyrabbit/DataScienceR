@@ -2,12 +2,12 @@
 % Please edit documentation in R/plot.tune.cutoff.R
 \name{plot.tune.cutoff}
 \alias{plot.tune.cutoff}
-\title{Plot cutoff tuning process from "\code{tune.cutoff}"}
+\title{Plot cutoff tuning process from "\code{tune_cutoff}"}
 \usage{
 \method{plot}{tune.cutoff}(x, pch = 20, cex = 1.5, col = "red", ...)
 }
 \arguments{
-\item{x}{"\code{tune.cutoff}" object}
+\item{x}{"\code{tune_cutoff}" object}
 
 \item{pch}{type of cutoff points, default is 20}
 

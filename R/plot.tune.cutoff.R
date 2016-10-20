@@ -1,6 +1,6 @@
-#' Plot cutoff tuning process from "\code{tune.cutoff}"
+#' Plot cutoff tuning process from "\code{tune_cutoff}"
 #' @description Plots cutoff tuning process
-#' @param x "\code{tune.cutoff}" object
+#' @param x "\code{tune_cutoff}" object
 #' @param pch type of cutoff points, default is 20
 #' @param cex size of cutoff points, default is 1.5, col = "red"
 #' @param ... other parameters in "\code{plot()}" function

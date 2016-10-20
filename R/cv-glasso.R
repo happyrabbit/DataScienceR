@@ -7,7 +7,7 @@
 #' @param na_action function determining what should be done with missing values when predicting new data during cross validation. The default is to predict NA.
 #' @param kfold number of folds - default is 10. Although nfolds can be as large as the sample size (leave-one-out CV), it is not recommended for large datasets. The default is 10.
 #' @return
-#' an object of class "\code{cv.glasso}" is returned, which is a list with the ingredients of the cross-validation fit.
+#' an object of class "\code{cv_glasso}" is returned, which is a list with the ingredients of the cross-validation fit.
 #' @author Hui Lin, \email{longqiman@gmail.com}
 #' @examples
 #' \dontrun{
@@ -22,12 +22,13 @@
 #' type = "link"
 #' # number of cross-validation folds
 #' kfold <- 10
-#' cv.fit <- cv.glasso(trainx, trainy, nlam = nlam, kfold = kfold)
-#' str(cv.fit)
+#' cv_fit <- cv_glasso(trainx, trainy, nlam = nlam, kfold = kfold)
+#' str(cv_fit)
 #' }
 
 #' @export
-cv.glasso <- function(trainx, trainy, nlam = 100, type = "link", kfold = 10,
+#'
+cv_glasso <- function(trainx, trainy, nlam = 100, type = "link", kfold = 10,
                       na_action = na.pass) {
 
   library(grplasso)
@@ -68,8 +69,9 @@ cv.glasso <- function(trainx, trainy, nlam = 100, type = "link", kfold = 10,
     auc[i] <- as.numeric(auc(y0, pre[, i]))
   }
   pmsure = auc
-  lambda.max.auc = lambda[which(pmsure == max(pmsure))]
-  lambda.1se.auc = lambda[min(which(pmsure >= (max(pmsure) - sd(pmsure))))]
+  lambda.max.auc = c(lambda = lambda[which(pmsure == max(pmsure))], auc = max(pmsure))
+  se.auc = max(pmsure) - sd(pmsure)
+  lambda.1se.auc = c(lambda[min(which(pmsure >= se.auc))], se.auc = se.auc)
   ############################## Maximize log-likelihood
   loglike <- rep(0, ncol(pre))
   for (i in 1:ncol(pre)) {
@@ -77,8 +79,9 @@ cv.glasso <- function(trainx, trainy, nlam = 100, type = "link", kfold = 10,
                                                                          exp(pre[, i]))) * (1 - y0))
   }
   pmsure = loglike
-  lambda.max.loglike = lambda[which(pmsure == max(pmsure))]
-  lambda.1se.loglike = lambda[min(which(pmsure >= (max(pmsure) - sd(pmsure))))]
+  lambda.max.loglike = c(lambda = lambda[which(pmsure == max(pmsure))], loglike = max(pmsure))
+  se.loglike = max(pmsure) - sd(pmsure)
+  lambda.1se.loglike = c(lambda = lambda[min(which(pmsure >= se.loglike))], se.loglike = se.loglike)
   ############################## Maximize correlation
   co <- pre
   maxco <- rep(0, ncol(pre))
@@ -91,14 +94,15 @@ cv.glasso <- function(trainx, trainy, nlam = 100, type = "link", kfold = 10,
     maxco[i] <- max(na.omit(co[, i]))
   }
   pmsure = maxco
-  lambda.max.maxco = lambda[which(pmsure == max(pmsure))]
-  lambda.1se.maxco = lambda[min(which(pmsure >= (max(pmsure) - sd(pmsure))))]
+  lambda.max.maxco = c(lambda = lambda[which(pmsure == max(pmsure))], maxco = max(pmsure))
+  se.maxco = max(pmsure) - sd(pmsure)
+  lambda.1se.maxco = c(lambda = lambda[min(which(pmsure >= se.maxco))], se.maxco = se.maxco)
   ###############
   res <- list(lambda = lambda, pred = pre, auc = auc, log_likelihood = loglike,
               maxrho = maxco, lambda.max.auc = lambda.max.auc, lambda.1se.auc = lambda.1se.auc,
               lambda.max.loglike = lambda.max.loglike, lambda.1se.loglike = lambda.1se.loglike,
               lambda.max.maxco = lambda.max.maxco, lambda.1se.maxco = lambda.1se.maxco)
   return(res)
-  class(res) <- "cv.glasso"
+  class(res) <- "cv_glasso"
   invisible(res)
 }
