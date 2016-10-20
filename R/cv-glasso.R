@@ -1,4 +1,4 @@
-#' Cross-validation for glmnet
+#' Cross-validation for group lasso logistic regression
 #' @description Does k-fold cross-validation for group lasso logistic regression and returns a list object
 #' @param trainx  a data frame where samples are in rows and features are in columns
 #' @param trainy a numeric or factor vector containing the outcome for each sample
