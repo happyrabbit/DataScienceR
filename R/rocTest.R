@@ -1,4 +1,4 @@
-#` Compute the area under the ROC curve and compare different AUC's
+#' Compute the area under the ROC curve and compare different AUC's
 #' @description This function compares the AUC of two correlated (or paired) or uncorrelated (un- paired) ROC curves.
 #' @author Hui Lin, \email{longqiman@gmail.com}
 #' @param y  response

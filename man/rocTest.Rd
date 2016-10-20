@@ -2,6 +2,7 @@
 % Please edit documentation in R/rocTest.R
 \name{rocTest}
 \alias{rocTest}
+\title{Compute the area under the ROC curve and compare different AUC's}
 \usage{
 rocTest(y, x, L = NULL)
 }
