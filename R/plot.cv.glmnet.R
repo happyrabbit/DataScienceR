@@ -2,7 +2,6 @@
 #' @description Plots the cross-validation curve as a function of the lambda values used.
 #' @param x  fitted "\code{cv.glasso}" object
 #' @param type.measure criteria to use for cross-validation. Currently three options. The default is \code{type.measure = "auc"} which gives area under the ROC curve. \code{type.measure = "loglike"} computes the log-likelihood score in Meier et al2008. \code{type.measure = "maxco"} computes the maximum correlation coefficient in Yeo and Burge.
-#' @param ...
 #' @return A plot is produced, and nothing is returned.
 #' @author Hui Lin, \email{longqiman@gmail.com}
 #' @references L. Meier, S. van de Geer, and P. Buhlmann, The group lasso for logistic regression, J. R. Stat. Soc. Ser. B Stat. Methodol. 70 (2008), pp. 53-71.
