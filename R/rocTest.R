@@ -5,6 +5,7 @@
 #' @param x  prediction
 #' @param L  list to assign the comparisons
 
+#' @export
 rocTest <- function(y, x, L = NULL) {
 
     trapezarea <- function (x, y)
