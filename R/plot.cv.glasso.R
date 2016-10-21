@@ -28,9 +28,10 @@
 #'
 plot.cv_glasso <- function (x, type.measure = "auc", ...)
 {
-  cvobj = x
-  xlab = "Lambda"
-  plot.args = list(x = cvobj$lambda, y = cvobj[[type.measure]],
+  cvobj <- x
+  xlab <- "Lambda"
+  y <- cvobj[[type.measure]]
+  plot.args = list(x = cvobj$lambda, y = y,
                    ylim = range(y)+c(-sd(y), sd(y)), xlab = xlab, ylab = type.measure,
                    type = "n")
   new.args = list(...)
@@ -44,8 +45,8 @@ plot.cv_glasso <- function (x, type.measure = "auc", ...)
   # axis(side = 3, at = cvobj$lambda, labels = paste(cvobj$nz),
   #     tick = FALSE, line = 0)
 
-  abline(v = cvobj[[paste("lambda.max",type.measure,sep=".")]], lty = 3)
-  abline(v = cvobj[[paste("lambda.1se",type.measure,sep=".")]], lty = 3)
+  abline(v = cvobj[[paste("lambda.max",type.measure,sep=".")]][1], lty = 3)
+  abline(v = cvobj[[paste("lambda.1se",type.measure,sep=".")]][1], lty = 3)
   invisible()
 }
 
