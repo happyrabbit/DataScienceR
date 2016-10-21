@@ -102,7 +102,7 @@ cv_glasso <- function(trainx, trainy, nlam = 100, type = "link", kfold = 10,
               maxrho = maxco, lambda.max.auc = lambda.max.auc, lambda.1se.auc = lambda.1se.auc,
               lambda.max.loglike = lambda.max.loglike, lambda.1se.loglike = lambda.1se.loglike,
               lambda.max.maxco = lambda.max.maxco, lambda.1se.maxco = lambda.1se.maxco)
-  return(res)
   class(res) <- "cv_glasso"
+  return(res)
   invisible(res)
 }

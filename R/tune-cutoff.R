@@ -105,8 +105,9 @@ tune_cutoff <- function(test, y, likelihood) {
   cutoffs = sort(ids),
   likelihood = sort(likelihood)
   )
-  return(res)
+  
   class(res) <- "tune_cutoff"
+  return(res)
   invisible(res)
 }
 
