@@ -9,7 +9,7 @@ impute_dat(dat, method)
 \arguments{
 \item{dat}{a data frame.}
 
-\item{method}{imputation method. Need to be one of these: zero, mean, Inf0, code99}
+\item{method}{imputation method. Need to be one of these: \code{zero}, \code{mean}, \code{Inf0}, \code{code99}}
 }
 \description{
 Impute missing values

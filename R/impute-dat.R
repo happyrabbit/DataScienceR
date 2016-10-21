@@ -1,7 +1,7 @@
 #' Impute missing values
 #'
 #' @param dat a data frame.
-#' @param method imputation method. Need to be one of these: zero, mean, Inf0, code99
+#' @param method imputation method. Need to be one of these: \code{zero}, \code{mean}, \code{Inf0}, \code{code99}
 #' @author Hui Lin, \email{longqiman@gmail.com}
 #' @examples
 #' \dontrun{
