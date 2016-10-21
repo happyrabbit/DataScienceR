@@ -25,7 +25,6 @@
 #' }
 #'
 #' @export
-#'
 plot.cv_glasso <- function (x, type.measure = "auc", ...)
 {
   cvobj <- x

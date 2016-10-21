@@ -25,8 +25,6 @@
 #' }
 #'
 #' @export
-
-
 plot.tune.cutoff <- function (x, pch= 20, cex = 1.5, col = "red", ...) {
   dat <- x$cutoff.tune
   plot(dat$PPV, dat$NPV, type = "l", xlab = "True Positive", ylab = "True Negative",
