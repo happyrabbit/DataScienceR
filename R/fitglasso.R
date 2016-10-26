@@ -37,5 +37,6 @@ fitglasso <- function(trainx, trainy, lambda, na_action = na.pass) {
   index <- c(NA, as.factor(index))
   ################################# Get a vector of tuning parameters
   fit <- grplasso(x, trainy, index = index, lambda = lambda)
+  # class(fit)<- "fitglasso"
   return(fit)
 }
