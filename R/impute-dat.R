@@ -39,7 +39,7 @@ impute_dat <- function (dat, method){
   else if (method == "Inf0")
   {
     for (i in 1:ncol(dat)) {
-      idx <- which(dat[, i] == Inf)
+      idx <- which(abs(dat[, i]) == Inf)
       if (length(idx))
         dat[, i][idx] <- 0
     }
