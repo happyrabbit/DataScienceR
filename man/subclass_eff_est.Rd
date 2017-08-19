@@ -10,11 +10,13 @@ subclass_eff_est(object, y)
 \item{object}{The output object from matchit. This is a required input.}
 
 \item{y}{outcome variable. This is a required input.}
+}
 \value{
 Fuction returns a list with the ATT and ATE estimates
 }
 \description{
-After stratification, estimation the weighted mean difference. Return estimates of ATT and ATE}
+After stratification, estimation the weighted mean difference. Return estimates of ATT and ATE
+}
 \examples{
 \dontrun{
 subclass_eff_est(m2.out, match.data(m2.out)$CORN_UNITS_CHG)
